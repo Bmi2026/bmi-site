@@ -5,115 +5,209 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BMI High Education Center - Embilipitiya</title>
     
-    <!-- WhatsApp / Social Media Share Preview Tags -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="BMI High Education Center - Embilipitiya">
     <meta property="og:description" content="ඇඹිලිපිටියේ පිහිටි විශිෂ්ටතම අධ්‍යාපන පීඨය.">
     <meta property="og:image" content="https://bmi2026.github.io/bmi-site/assets/preview.jpg">
     <meta property="og:url" content="https://bmi2026.github.io/bmi-site/">
 
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts (Nature/Professional Look) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Sinhala:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght=300;400;500;600;700&family=Noto+Sans+Sinhala:wght=400;500;700&display=swap" rel="stylesheet">
     
     <style>
         body {
             font-family: 'Inter', 'Noto Sans Sinhala', sans-serif;
+            overflow-x: hidden;
         }
         .nature-gradient {
             background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+        }
+
+        /* --- LOADING SCREEN ANIMATIONS --- */
+        #preloader {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: #064e3b; /* Dark Emerald Nature Background */
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+
+        /* Typing Animation Effect */
+        .typing-text {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            border-right: 3px solid #10b981;
+            white-space: nowrap;
+            overflow: hidden;
+            width: 0;
+            animation: typing 2.5s steps(15) forwards, blink 0.75s step-end infinite;
+            margin-top: 20px;
+            letter-spacing: 2px;
+        }
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 16ch; } /* Fits "BMI EMBILIPITIYA" */
+        }
+        @keyframes blink {
+            from, to { border-color: transparent; }
+            50% { border-color: #10b981; }
+        }
+
+        /* Bird & Tree SVG Animation */
+        .nature-anim {
+            width: 150px;
+            height: 150px;
+        }
+        .leaf {
+            animation: sway 3s ease-in-out infinite alternate;
+            transform-origin: bottom center;
+        }
+        .mom-bird {
+            animation: bob 2s ease-in-out infinite alternate;
+        }
+        .baby-bird {
+            animation: chirp 1.2s ease-in-out infinite alternate;
+            transform-origin: bottom right;
+        }
+        @keyframes sway {
+            0% { transform: rotate(-5deg); }
+            100% { transform: rotate(5deg); }
+        }
+        @keyframes bob {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-5px); }
+        }
+        @keyframes chirp {
+            0% { transform: scaleY(1); }
+            50% { transform: scaleY(1.15) rotate(-3deg); }
+            100% { transform: scaleY(1); }
+        }
+
+        /* --- SCROLL ANIMATION CLASSES --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
 <body class="bg-stone-50 text-stone-800 antialiased">
 
-    <!-- NAVIGATION BAR (ස්වභාවික තද කොළ පැහැයෙන්) -->
+    <div id="preloader">
+        <svg class="nature-anim" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10,80 Q40,70 90,75" stroke="#78350f" stroke-width="4" fill="none" stroke-linecap="round"/>
+            <path class="leaf" d="M35,72 Q25,60 30,55 Q40,60 35,72" fill="#10b981"/>
+            <path class="leaf" d="M65,74 Q75,65 70,60 Q60,65 65,74" fill="#047857"/>
+            
+            <path d="M40,73 Q50,83 60,73 Z" fill="#b45309"/>
+            
+            <g class="mom-bird" transform="translate(25, 43)">
+                <circle cx="12" cy="12" r="10" fill="#059669"/>
+                <circle cx="16" cy="10" r="2" fill="#ffffff"/>
+                <polygon points="22,10 26,12 22,14" fill="#f59e0b"/>
+                <path d="M4,14 Q8,22 2,22 Z" fill="#047857"/>
+            </g>
+            
+            <g class="baby-bird" transform="translate(45, 58)">
+                <circle cx="5" cy="5" r="5" fill="#34d399"/>
+                <polygon points="8,3 12,5 8,7" fill="#f59e0b"/>
+                <circle cx="6" cy="4" r="1" fill="#000000"/>
+            </g>
+        </svg>
+        <div class="typing-text">BMI EMBILIPITIYA</div>
+    </div>
+
+
     <nav class="bg-emerald-900 text-white sticky top-0 z-50 shadow-md">
         <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="flex items-center space-x-3">
-                <div class="bg-emerald-500 p-2 rounded-lg text-white">
+            <div class="flex items-center space-x-3 group cursor-pointer">
+                <div class="bg-emerald-500 p-2 rounded-lg text-white group-hover:rotate-12 transition duration-300">
                     <i class="fa-solid fa-graduation-cap text-xl"></i>
                 </div>
-                <span class="text-xl font-bold tracking-wide text-emerald-400">BMI <span class="text-white">EMBILIPITIYA</span></span>
+                <span class="text-xl font-bold tracking-wide text-emerald-400">BMI <span class="text-white group-hover:text-emerald-300 transition">EMBILIPITIYA</span></span>
             </div>
             <div class="hidden md:flex space-x-8 font-medium">
-                <a href="#home" class="hover:text-emerald-400 transition">මුල් පිටුව</a>
-                <a href="#lecturers" class="hover:text-emerald-400 transition">දේශකවරුන්</a>
-                <a href="#registration-section" class="hover:text-emerald-400 transition">ලියාපදිංචිය</a>
-                <a href="#contact" class="hover:text-emerald-400 transition">සම්බන්ධ වීමට</a>
+                <a href="#home" class="hover:text-emerald-400 transition transform hover:-translate-y-0.5">මුල් පිටුව</a>
+                <a href="#lecturers" class="hover:text-emerald-400 transition transform hover:-translate-y-0.5">දේශකවරුන්</a>
+                <a href="#registration-section" class="hover:text-emerald-400 transition transform hover:-translate-y-0.5">ලියාපදිංචිය</a>
+                <a href="#contact" class="hover:text-emerald-400 transition transform hover:-translate-y-0.5">සම්බන්ධ වීමට</a>
             </div>
             <div>
-                <a href="#registration-section" class="bg-emerald-500 hover:bg-emerald-600 text-white font-semibold px-5 py-2.5 rounded-full transition shadow-sm text-sm">Register Now</a>
+                <a href="#registration-section" class="bg-emerald-500 hover:bg-emerald-600 text-white font-semibold px-5 py-2.5 rounded-full transition transform hover:scale-105 active:scale-95 duration-200 inline-block shadow-sm text-sm">Register Now</a>
             </div>
         </div>
     </nav>
 
-    <!-- HERO SECTION -->
-    <header id="home" class="nature-gradient py-20 px-6 border-b border-emerald-100">
-        <div class="max-w-4xl mx-auto text-center">
-            <span class="bg-emerald-200 text-emerald-800 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Education For Future</span>
-            <h1 class="text-4xl md:text-5xl font-bold text-emerald-950 mt-4 mb-6 leading-tight">BMI උසස් අධ්‍යාපන ආයතනය</h1>
-            <p class="text-lg text-stone-600 max-w-2xl mx-auto leading-relaxed">ඇඹිලිපිටියේ Tulip ග්‍රන්ථ ප්‍රදර්ශනාගාර ඉහළ මහලේ පිහිටි විශිෂ්ටතම අධ්‍යාපන පීඨය. සුවපහසු වටපිටාවක ඔබේ දරුවාගේ අනාගතය සුරක්ෂිත කරන්න අප හා එක්වන්න.</p>
+
+    <header id="home" class="nature-gradient py-24 px-6 border-b border-emerald-100 flex items-center justify-center relative overflow-hidden">
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <span class="bg-emerald-200 text-emerald-800 text-xs font-semibold px-4 py-1.5 rounded-full uppercase tracking-wider inline-block animate-bounce mb-4">Education For Future</span>
+            <h1 class="text-4xl md:text-6xl font-bold text-emerald-950 mt-2 mb-6 leading-tight tracking-tight">BMI උසස් අධ්‍යාපන ආයතනය</h1>
+            <p class="text-base md:text-xl text-stone-600 max-w-2xl mx-auto leading-relaxed">ඇඹිලිපිටියේ Tulip ග්‍රන්ථ ප්‍රදර්ශනාගාර ඉහළ මහලේ පිහිටි විශිෂ්ටතම අධ්‍යාපන පීඨය. සුවපහසු හා හරිතකාමී වටපිටාවක ඔබේ දරුවාගේ අනාගතය සුරක්ෂිත කරන්න අප හා එක්වන්න.</p>
         </div>
     </header>
 
-    <!-- LECTURERS SECTION -->
-    <section id="lecturers" class="py-20 max-w-6xl mx-auto px-6">
-        <div class="text-center mb-16">
+
+    <section id="lecturers" class="py-24 max-w-6xl mx-auto px-6">
+        <div class="text-center mb-16 reveal">
             <h2 class="text-3xl font-bold text-stone-900 mb-3">අපේ ප්‍රවීණ දේශක මඩුල්ල</h2>
             <p class="text-stone-500 text-sm">ගුරුවරයාගේ නම මත ක්ලික් කර පන්ති කාලසටහන සහ WhatsApp විස්තර ලබාගන්න.</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <!-- Card 1 -->
-            <div class="bg-white border border-stone-200 rounded-2xl p-8 text-center shadow-xs hover:shadow-md transition duration-300">
-                <div class="w-24 h-24 bg-emerald-50 rounded-full flex items-center justify-center mx-auto mb-6 text-emerald-600 text-3xl shadow-inner">
+            <div class="bg-white border border-stone-200 rounded-2xl p-8 text-center shadow-xs hover:shadow-xl hover:-translate-y-2 transition duration-300 reveal">
+                <div class="w-24 h-24 bg-emerald-50 rounded-full flex items-center justify-center mx-auto mb-6 text-emerald-600 text-3xl shadow-inner transition duration-500 hover:rotate-12">
                     <i class="fa-solid fa-user-tie"></i>
                 </div>
                 <span class="bg-blue-50 text-blue-700 text-xs font-semibold px-3 py-1 rounded-md uppercase tracking-wider">Science</span>
                 <h3 class="text-xl font-bold text-stone-900 mt-4 mb-4">Dilan P Baduwalage</h3>
-                <a href="https://wa.me/94765772056" target="_blank" class="inline-flex items-center space-x-2 text-emerald-600 hover:text-emerald-700 font-medium text-sm">
-                    <i class="fa-brands fa-whatsapp text-lg"></i> <span>+94 76 577 2056</span>
+                <a href="https://wa.me/94765772056" target="_blank" class="inline-flex items-center space-x-2 text-emerald-600 hover:text-emerald-700 font-medium text-sm group">
+                    <i class="fa-brands fa-whatsapp text-lg group-hover:scale-120 transition"></i> <span>+94 76 577 2056</span>
                 </a>
             </div>
 
-            <!-- Card 2 -->
-            <div class="bg-white border border-stone-200 rounded-2xl p-8 text-center shadow-xs hover:shadow-md transition duration-300">
-                <div class="w-24 h-24 bg-emerald-50 rounded-full flex items-center justify-center mx-auto mb-6 text-emerald-600 text-3xl shadow-inner">
+            <div class="bg-white border border-stone-200 rounded-2xl p-8 text-center shadow-xs hover:shadow-xl hover:-translate-y-2 transition duration-300 reveal">
+                <div class="w-24 h-24 bg-emerald-50 rounded-full flex items-center justify-center mx-auto mb-6 text-emerald-600 text-3xl shadow-inner transition duration-500 hover:rotate-12">
                     <i class="fa-solid fa-user-tie"></i>
                 </div>
                 <span class="bg-purple-50 text-purple-700 text-xs font-semibold px-3 py-1 rounded-md uppercase tracking-wider">Mathematics</span>
                 <h3 class="text-xl font-bold text-stone-900 mt-4 mb-4">Chamil Eranda</h3>
-                <a href="https://wa.me/94713530463" target="_blank" class="inline-flex items-center space-x-2 text-emerald-600 hover:text-emerald-700 font-medium text-sm">
-                    <i class="fa-brands fa-whatsapp text-lg"></i> <span>+94 71 353 0463</span>
+                <a href="https://wa.me/94713530463" target="_blank" class="inline-flex items-center space-x-2 text-emerald-600 hover:text-emerald-700 font-medium text-sm group">
+                    <i class="fa-brands fa-whatsapp text-lg group-hover:scale-120 transition"></i> <span>+94 71 353 0463</span>
                 </a>
             </div>
 
-            <!-- Card 3 -->
-            <div class="bg-white border border-stone-200 rounded-2xl p-8 text-center shadow-xs hover:shadow-md transition duration-300">
-                <div class="w-24 h-24 bg-emerald-50 rounded-full flex items-center justify-center mx-auto mb-6 text-emerald-600 text-3xl shadow-inner">
+            <div class="bg-white border border-stone-200 rounded-2xl p-8 text-center shadow-xs hover:shadow-xl hover:-translate-y-2 transition duration-300 reveal">
+                <div class="w-24 h-24 bg-emerald-50 rounded-full flex items-center justify-center mx-auto mb-6 text-emerald-600 text-3xl shadow-inner transition duration-500 hover:rotate-12">
                     <i class="fa-solid fa-user-tie"></i>
                 </div>
                 <span class="bg-amber-50 text-amber-700 text-xs font-semibold px-3 py-1 rounded-md uppercase tracking-wider">English</span>
                 <h3 class="text-xl font-bold text-stone-900 mt-4 mb-4">Asantha S Jayamanna</h3>
-                <a href="https://wa.me/94713530463" target="_blank" class="inline-flex items-center space-x-2 text-emerald-600 hover:text-emerald-700 font-medium text-sm">
-                    <i class="fa-brands fa-whatsapp text-lg"></i> <span>+94 71 353 0463</span>
+                <a href="https://wa.me/94713530463" target="_blank" class="inline-flex items-center space-x-2 text-emerald-600 hover:text-emerald-700 font-medium text-sm group">
+                    <i class="fa-brands fa-whatsapp text-lg group-hover:scale-120 transition"></i> <span>+94 71 353 0463</span>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- DYNAMIC REGISTRATION / DASHBOARD SECTION (ස්වභාවික කොළ පැහැති පසුබිම) -->
-    <section id="registration-section" class="bg-emerald-50 py-20 border-t border-b border-emerald-100">
+
+    <section id="registration-section" class="bg-emerald-50 py-24 border-t border-b border-emerald-100 reveal">
         <div class="max-w-xl mx-auto px-6">
             
-            <!-- 1. REGISTRATION FORM (ලියාපදිංචි වී නැති අයට පමණක් පෙනේ) -->
-            <div id="reg-form-block" class="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-stone-200">
+            <div id="reg-form-block" class="bg-white p-8 md:p-10 rounded-2xl shadow-md border border-stone-200 transition duration-500">
                 <h2 class="text-2xl md:text-3xl font-bold text-center text-emerald-950 mb-8">නව පන්ති සඳහා ලියාපදිංචිය</h2>
                 <form onsubmit="handleRegistration(event)" class="space-y-6">
                     <div>
@@ -124,19 +218,18 @@
                         <label class="block text-sm font-semibold text-stone-700 mb-2">දුරකථන අංකය</label>
                         <input type="tel" required placeholder="07x xxxxxxx" class="w-full px-4 py-3 border border-stone-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 bg-stone-50 transition">
                     </div>
-                    <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 rounded-xl shadow-md hover:shadow-lg transition duration-200 cursor-pointer text-center">
+                    <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 rounded-xl shadow-md hover:shadow-lg transition transform active:scale-98 duration-200 cursor-pointer text-center">
                         ඇතුළත් වන්න
                     </button>
                 </form>
             </div>
 
-            <!-- 2. PERMANENT DASHBOARD (ලියාපදිංචි වූ අයට පමණක් ස්ථිරවම පෙනේ) -->
-            <div id="reg-dashboard-block" class="hidden bg-white p-8 md:p-10 rounded-2xl shadow-md border-2 border-emerald-500 text-center space-y-6 animate-fade-in">
-                <div class="w-20 h-20 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto text-4xl shadow-inner">
+            <div id="reg-dashboard-block" class="hidden bg-white p-8 md:p-10 rounded-2xl shadow-xl border-2 border-emerald-500 text-center space-y-6 transition duration-500 scale-95 opacity-0">
+                <div class="w-20 h-20 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto text-4xl shadow-inner animate-pulse">
                     <i class="fa-solid fa-circle-check"></i>
                 </div>
                 <h2 class="text-2xl md:text-3xl font-bold text-emerald-950">ඔබේ Dashboard එක</h2>
-                <div class="p-4 bg-emerald-50 rounded-xl border border-emerald-200">
+                <div class="p-5 bg-emerald-50 rounded-xl border border-emerald-200 shadow-xs">
                     <p class="text-emerald-900 font-bold text-lg">🎉 ඔබ සාර්ථකව ලියාපදිංචි වී ඇත!</p>
                     <p class="text-stone-600 text-sm mt-1">BMI ආයතනය සමඟ සම්බන්ධ වීම ගැන ස්තුතියි.</p>
                 </div>
@@ -146,8 +239,8 @@
         </div>
     </section>
 
-    <!-- CONTACT / FOOTER SECTION -->
-    <footer id="contact" class="bg-stone-900 text-stone-300 py-16 px-6 text-sm">
+
+    <footer id="contact" class="bg-stone-900 text-stone-300 py-16 px-6 text-sm reveal">
         <div class="max-w-4xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center space-y-8 md:space-y-0">
             <div>
                 <h3 class="text-white font-bold text-lg mb-4">BMI High Education Center</h3>
@@ -160,8 +253,8 @@
                 </p>
             </div>
             <div class="flex space-x-4">
-                <a href="#" class="w-10 h-10 bg-stone-800 hover:bg-emerald-600 rounded-full flex items-center justify-center text-white transition"><i class="fa-brands fa-facebook-f"></i></a>
-                <a href="https://wa.me/94713530463" target="_blank" class="w-10 h-10 bg-stone-800 hover:bg-emerald-600 rounded-full flex items-center justify-center text-white transition"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="#" class="w-10 h-10 bg-stone-800 hover:bg-emerald-600 rounded-full flex items-center justify-center text-white transition transform hover:scale-110"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://wa.me/94713530463" target="_blank" class="w-10 h-10 bg-stone-800 hover:bg-emerald-600 rounded-full flex items-center justify-center text-white transition transform hover:scale-110"><i class="fa-brands fa-whatsapp"></i></a>
             </div>
         </div>
         <div class="max-w-4xl mx-auto border-t border-stone-800 mt-12 pt-6 text-center text-xs text-stone-500">
@@ -169,35 +262,59 @@
         </div>
     </footer>
 
-    <!-- JAVASCRIPT FOR PERMANENT DASHBOARD LOGIC -->
+
     <script>
-        // පිටුව මුලින්ම Load වන විට ක්‍රියාත්මක වන කොටස
+        // 1. PRELOADER HIDE LOGIC
+        window.addEventListener("load", function() {
+            const preloader = document.getElementById("preloader");
+            setTimeout(() => {
+                preloader.style.opacity = "0";
+                preloader.style.visibility = "hidden";
+                revealElements();
+            }, 2800);
+        });
+
+        // 2. SCROLL REVEAL ANIMATION LOGIC
+        window.addEventListener("scroll", revealElements);
+
+        function revealElements() {
+            const reveals = document.querySelectorAll(".reveal");
+            for (let i = 0; i < reveals.length; i++) {
+                const windowHeight = window.innerHeight;
+                const elementTop = reveals[i].getBoundingClientRect().top;
+                const elementVisible = 100;
+
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+
+        // 3. REGISTRATION / DASHBOARD MANAGEMENT
         document.addEventListener("DOMContentLoaded", function() {
             checkRegistrationStatus();
         });
 
-        // ලියාපදිංචි වී ඇත්දැයි බ්‍රවුසර් මතකය (localStorage) පරීක්ෂා කිරීම
         function checkRegistrationStatus() {
             const isRegistered = localStorage.getItem("bmi_user_registered");
             const formBlock = document.getElementById("reg-form-block");
             const dashboardBlock = document.getElementById("reg-dashboard-block");
 
             if (isRegistered === "true") {
-                if (formBlock) formBlock.classList.add("hidden"); // Form එක හංගනවා
-                if (dashboardBlock) dashboardBlock.classList.remove("hidden"); // Dashboard එක පෙන්වනවා
+                if (formBlock) formBlock.classList.add("hidden");
+                if (dashboardBlock) {
+                    dashboardBlock.classList.remove("hidden");
+                    setTimeout(() => {
+                        dashboardBlock.style.transform = "scale(1)";
+                        dashboardBlock.style.opacity = "1";
+                    }, 100);
+                }
             }
         }
 
-        // "ඇතුළත් වන්න" බොත්තම එබූ විට සිදුවන ක්‍රියාවලිය
         function handleRegistration(event) {
-            event.preventDefault(); // පිටුව Reload වීම වලකනවා
-
-            // ⚠️ (මෙහිදී ඔබගේ Google Sheet එකට Data යවන Code එක ඇත්නම් එය ක්‍රියාත්මක වේ)
-
-            // බ්‍රවුසර් එකේ ලියාපදිංචිය ස්ථිරවම සේව් කිරීම
+            event.preventDefault(); 
             localStorage.setItem("bmi_user_registered", "true");
-
-            // සජීවීවම Interface එක Dashboard එකට මාරු කිරීම
             checkRegistrationStatus();
         }
     </script>
