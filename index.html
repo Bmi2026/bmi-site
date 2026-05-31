@@ -4,469 +4,203 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BMI High Education Center - Embilipitiya</title>
+    
+    <!-- WhatsApp / Social Media Share Preview Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="BMI High Education Center - Embilipitiya">
+    <meta property="og:description" content="ඇඹිලිපිටියේ පිහිටි විශිෂ්ටතම අධ්‍යාපන පීඨය.">
+    <meta property="og:image" content="https://bmi2026.github.io/bmi-site/assets/preview.jpg">
+    <meta property="og:url" content="https://bmi2026.github.io/bmi-site/">
+
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts (Nature/Professional Look) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Noto+Sans+Sinhala:wght@400;700&family=Abhaya+Libre:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Sinhala:wght@400;500;700&display=swap" rel="stylesheet">
     
     <style>
         body {
             font-family: 'Inter', 'Noto Sans Sinhala', sans-serif;
-            scroll-behavior: smooth;
         }
-        
-        /* --- 🌟 VESAK ANIMATIONS 🌟 --- */
-        @keyframes oilLampFlame {
-            0%, 100% { transform: scale(1) rotate(-1deg); opacity: 0.9; filter: drop-shadow(0 0 4px #f59e0b); }
-            50% { transform: scale(1.15) rotate(2deg); opacity: 1; filter: drop-shadow(0 0 10px #f59e0b); }
+        .nature-gradient {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
         }
-
-        @keyframes lanternSway {
-            0%, 100% { transform: rotate(-4deg); transform-origin: top center; }
-            50% { transform: rotate(4deg); transform-origin: top center; }
-        }
-
-        @keyframes neonGlow {
-            0%, 100% { text-shadow: 0 0 10px rgba(251,191,36,0.6), 0 0 20px rgba(251,191,36,0.4); opacity: 0.9; }
-            50% { text-shadow: 0 0 25px rgba(251,191,36,0.9), 0 0 40px rgba(245,158,11,0.6); opacity: 1; }
-        }
-
-        @keyframes letterReveal {
-            0% { opacity: 0; transform: translateY(30px) scale(0.5); filter: blur(10px); }
-            100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
-        }
-
-        @keyframes tailSway {
-            0%, 100% { transform: skewX(-5deg); }
-            50% { transform: skewX(5deg); }
-        }
-
-        .vesak-lantern { animation: lanternSway 4s infinite ease-in-out; }
-        .lantern-tail { animation: tailSway 2.5s infinite ease-in-out; }
-        .flame { animation: oilLampFlame 0.6s infinite ease-in-out; }
-        .vesak-glow-text { animation: neonGlow 2s infinite ease-in-out; }
-
-        .char-1 { animation: letterReveal 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards 0.2s; }
-        .char-2 { animation: letterReveal 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards 0.4s; }
-        .char-3 { animation: letterReveal 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards 0.6s; }
-        .char-4 { animation: letterReveal 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards 0.8s; }
-        .char-5 { animation: letterReveal 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards 1.0s; }
-
-        .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s ease-out; }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-        .animated-card { transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); }
-        .animated-card:hover { transform: translateY(-10px); box-shadow: 0 20px 35px rgba(245, 158, 11, 0.2); }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800 overflow-x-hidden">
+<body class="bg-stone-50 text-stone-800 antialiased">
 
-    <div id="splash-screen" class="fixed inset-0 bg-gradient-to-b from-slate-950 via-amber-950 to-black z-[9999] flex flex-col items-center justify-center transition-all duration-1000 ease-in-out">
-        <div class="absolute inset-0 overflow-hidden pointer-events-none opacity-30">
-            <div class="absolute w-2 h-2 rounded-full bg-amber-400 top-1/4 left-1/4 blur-sm animate-ping"></div>
-            <div class="absolute w-3 h-3 rounded-full bg-yellow-400 bottom-1/3 right-1/4 blur-sm animate-pulse"></div>
-        </div>
-        <div class="text-center z-10 px-4">
-            <div class="relative w-28 h-28 mx-auto mb-8 flex items-center justify-center">
-                <div class="absolute inset-0 bg-amber-500/20 rounded-full animate-ping"></div>
-                <i class="fa-solid fa-star text-amber-400 text-6xl drop-shadow-[0_0_25px_rgba(251,191,36,1)]"></i>
-            </div>
-            <h1 class="text-white text-6xl md:text-8xl font-bold tracking-wider mb-4 flex justify-center space-x-1 md:space-x-2 font-['Abhaya_Libre']">
-                <span class="opacity-0 inline-block char-1 text-amber-400 drop-shadow-[0_0_15px_rgba(251,191,36,0.6)]">ආ</span>
-                <span class="opacity-0 inline-block char-2">යූ</span>
-                <span class="opacity-0 inline-block char-3 text-amber-300">බෝ</span>
-                <span class="opacity-0 inline-block char-4">ව</span>
-                <span class="opacity-0 inline-block char-5">න්</span>
-            </h1>
-            <p class="text-amber-200/90 text-lg md:text-xl font-bold tracking-widest vesak-glow-text mt-4">සුබ වෙසක් මංගල්‍යයක් වේවා!</p>
-            <p class="text-gray-400 text-xs tracking-wider uppercase mt-2">BMI High Education Center</p>
-        </div>
-    </div>
-
-    <header class="bg-white/95 backdrop-blur-md shadow-md sticky top-0 z-50 transition-all duration-300">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="flex items-center space-x-3 group cursor-pointer">
-                <div class="bg-amber-500 text-slate-950 p-2 rounded-lg font-bold text-xl shadow-md transition-transform duration-500 group-hover:rotate-[360deg]">
-                    <i class="fa-solid fa-star"></i>
+    <!-- NAVIGATION BAR (ස්වභාවික තද කොළ පැහැයෙන්) -->
+    <nav class="bg-emerald-900 text-white sticky top-0 z-50 shadow-md">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <div class="bg-emerald-500 p-2 rounded-lg text-white">
+                    <i class="fa-solid fa-graduation-cap text-xl"></i>
                 </div>
-                <span class="text-xl font-bold text-gray-800 tracking-wide">BMI <span class="text-amber-500">EMBILIPITIYA</span></span>
+                <span class="text-xl font-bold tracking-wide text-emerald-400">BMI <span class="text-white">EMBILIPITIYA</span></span>
             </div>
-            <nav class="hidden md:flex space-x-8 font-semibold text-gray-600">
-                <a href="#home" class="hover:text-amber-500 transition relative">මුල් පිටුව</a>
-                <a href="#teachers" class="hover:text-amber-500 transition relative">දේශකවරුන්</a>
-                <a href="#classes" class="hover:text-amber-500 transition relative">පන්ති විස්තර</a>
-                <a href="#contact" class="hover:text-amber-500 transition relative">සම්බන්ධ වීමට</a>
-            </nav>
-            <a href="#contact" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold py-2 px-5 rounded-full transition-all shadow-lg hidden md:inline-block">Register Now</a>
+            <div class="hidden md:flex space-x-8 font-medium">
+                <a href="#home" class="hover:text-emerald-400 transition">මුල් පිටුව</a>
+                <a href="#lecturers" class="hover:text-emerald-400 transition">දේශකවරුන්</a>
+                <a href="#registration-section" class="hover:text-emerald-400 transition">ලියාපදිංචිය</a>
+                <a href="#contact" class="hover:text-emerald-400 transition">සම්බන්ධ වීමට</a>
+            </div>
+            <div>
+                <a href="#registration-section" class="bg-emerald-500 hover:bg-emerald-600 text-white font-semibold px-5 py-2.5 rounded-full transition shadow-sm text-sm">Register Now</a>
+            </div>
         </div>
-        <div class="bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-500 text-slate-950 text-center py-1.5 text-sm font-bold tracking-wide shadow-inner">
-            ✨ <span class="animate-pulse">සුබ වෙසක් මංගල්‍යයක් වේවා! (Happy Vesak Season)</span> ✨
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header id="home" class="nature-gradient py-20 px-6 border-b border-emerald-100">
+        <div class="max-w-4xl mx-auto text-center">
+            <span class="bg-emerald-200 text-emerald-800 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Education For Future</span>
+            <h1 class="text-4xl md:text-5xl font-bold text-emerald-950 mt-4 mb-6 leading-tight">BMI උසස් අධ්‍යාපන ආයතනය</h1>
+            <p class="text-lg text-stone-600 max-w-2xl mx-auto leading-relaxed">ඇඹිලිපිටියේ Tulip ග්‍රන්ථ ප්‍රදර්ශනාගාර ඉහළ මහලේ පිහිටි විශිෂ්ටතම අධ්‍යාපන පීඨය. සුවපහසු වටපිටාවක ඔබේ දරුවාගේ අනාගතය සුරක්ෂිත කරන්න අප හා එක්වන්න.</p>
         </div>
     </header>
 
-    <section id="home" class="relative bg-gradient-to-b from-slate-950 via-slate-900 to-blue-950 text-white py-28 px-6 overflow-hidden">
-        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:24px_24px]"></div>
-        
-        <div class="vesak-lantern absolute left-4 md:left-12 top-6 z-20 flex flex-col items-center">
-            <div class="w-1 h-12 bg-amber-400/40"></div>
-            <div class="w-12 h-12 bg-amber-500 rotate-45 border-2 border-yellow-300 shadow-[0_0_20px_rgba(245,158,11,0.8)] relative flex items-center justify-center">
-                <div class="w-6 h-6 bg-yellow-300 rounded-full blur-sm"></div>
-            </div>
-            <div class="lantern-tail flex space-x-1 mt-4">
-                <div class="w-1.5 h-10 bg-yellow-400 rounded-b"></div>
-                <div class="w-1.5 h-14 bg-amber-400 rounded-b"></div>
-                <div class="w-1.5 h-10 bg-yellow-400 rounded-b"></div>
-            </div>
-        </div>
-
-        <div class="vesak-lantern absolute right-4 md:right-12 top-10 z-20 flex flex-col items-center" style="animation-delay: -2s;">
-            <div class="w-1 h-8 bg-amber-400/40"></div>
-            <div class="w-14 h-14 bg-orange-500 rotate-45 border-2 border-amber-300 shadow-[0_0_25px_rgba(249,115,22,0.8)] relative flex items-center justify-center">
-                <div class="w-6 h-6 bg-yellow-200 rounded-full blur-sm"></div>
-            </div>
-            <div class="lantern-tail flex space-x-1 mt-5">
-                <div class="w-1.5 h-12 bg-amber-400 rounded-b"></div>
-                <div class="w-1.5 h-16 bg-yellow-300 rounded-b"></div>
-                <div class="w-1.5 h-12 bg-amber-400 rounded-b"></div>
-            </div>
-        </div>
-
-        <div class="container mx-auto max-w-5xl text-center relative z-10">
-            <span class="bg-amber-500/20 text-amber-300 text-xs font-bold px-4 py-1.5 rounded-full border border-amber-500/30 inline-block uppercase tracking-widest mb-4">BMI High Education Center</span>
-            <h1 class="text-5xl md:text-7xl font-extrabold mb-6 leading-tight font-['Abhaya_Libre']">BMI EMBILIPITIYA</h1>
-            <div class="my-6 inline-block bg-black/40 backdrop-blur-md px-6 py-3 rounded-2xl border border-amber-500/30">
-                <h3 class="text-2xl md:text-3xl font-bold text-amber-400 vesak-glow-text">සුබ වෙසක් මංගල්‍යයක් වේවා!</h3>
-            </div>
-            <p class="text-base md:text-lg text-gray-300 max-w-2xl mx-auto mb-10 leading-relaxed">ඇඹිලිපිටියේ Tulip ග්‍රන්ථ ප්‍රදර්ශනාගාර ඉහළ මහලේ පිහිටි, සිසුන්ගේ අධ්‍යාපන මෙන්ම ආධ්‍යාත්මික ගුණවර්ධනයට මුල්තැන දෙන විශිෂ්ටතම අධ්‍යාපන පීඨය.</p>
-            <div class="flex justify-center space-x-4">
-                <a href="#teachers" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold py-3.5 px-8 rounded-xl shadow-xl transition-all transform hover:-translate-y-1">දේශක මඩුල්ල</a>
-                <a href="#contact" class="bg-transparent border-2 border-white/60 hover:bg-white/5 font-bold py-3.5 px-8 rounded-xl transition-all transform hover:-translate-y-1">ලියාපදිංචි වන්න</a>
-            </div>
-        </div>
-    </section>
-
-    <section id="teachers" class="py-20 bg-white reveal">
-        <div class="container mx-auto px-6">
-            <div class="text-center max-w-2xl mx-auto mb-16">
-                <h2 class="text-4xl font-bold text-gray-900 mb-4">අපේ ප්‍රවීණ දේශක මඩුල්ල</h2>
-                <p class="text-gray-600">ගුරුවරයාගේ නම මත ක්ලික් කර පන්ති කාලසටහන සහ WhatsApp විස්තර ලබාගන්න.</p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                <div onclick="openTeacherModal('dilan')" class="animated-card bg-gray-50 rounded-2xl border border-gray-200 p-6 text-center cursor-pointer group flex flex-col justify-between">
-                    <div>
-                        <div class="w-28 h-28 bg-blue-100 rounded-full mx-auto mb-4 flex items-center justify-center border-4 border-white shadow">
-                            <i class="fa-solid fa-user-tie text-blue-600 text-4xl"></i>
-                        </div>
-                        <span class="bg-blue-100 text-blue-800 text-xs font-bold px-3 py-1 rounded-full uppercase">Science</span>
-                        <h3 class="text-xl font-bold text-gray-800 mt-3 mb-1 group-hover:text-amber-500 transition">Dilan P Baduwalage</h3>
-                    </div>
-                    <div class="mt-4 pt-3 border-t border-gray-100">
-                        <div class="flex items-center justify-center gap-1.5 text-emerald-600 font-bold text-sm mb-1">
-                            <i class="fa-brands fa-whatsapp text-base"></i>
-                            <span>+94 76 577 2056</span>
-                        </div>
-                        <span class="text-xs text-blue-600 font-semibold block">විස්තර බලන්න &rarr;</span>
-                    </div>
-                </div>
-
-                <div onclick="openTeacherModal('chamil')" class="animated-card bg-gray-50 rounded-2xl border border-gray-200 p-6 text-center cursor-pointer group flex flex-col justify-between">
-                    <div>
-                        <div class="w-28 h-28 bg-indigo-100 rounded-full mx-auto mb-4 flex items-center justify-center border-4 border-white shadow">
-                            <i class="fa-solid fa-user-tie text-indigo-600 text-4xl"></i>
-                        </div>
-                        <span class="bg-indigo-100 text-indigo-800 text-xs font-bold px-3 py-1 rounded-full uppercase">Mathematics</span>
-                        <h3 class="text-xl font-bold text-gray-800 mt-3 mb-1 group-hover:text-amber-500 transition">Chamil Eranda</h3>
-                    </div>
-                    <div class="mt-4 pt-3 border-t border-gray-100">
-                        <div class="flex items-center justify-center gap-1.5 text-emerald-600 font-bold text-sm mb-1">
-                            <i class="fa-brands fa-whatsapp text-base"></i>
-                            <span>+94 71 353 0463</span>
-                        </div>
-                        <span class="text-xs text-indigo-600 font-semibold block">විස්තර බලන්න &rarr;</span>
-                    </div>
-                </div>
-
-                <div onclick="openTeacherModal('asantha')" class="animated-card bg-gray-50 rounded-2xl border border-gray-200 p-6 text-center cursor-pointer group flex flex-col justify-between">
-                    <div>
-                        <div class="w-28 h-28 bg-purple-100 rounded-full mx-auto mb-4 flex items-center justify-center border-4 border-white shadow">
-                            <i class="fa-solid fa-user-tie text-purple-600 text-4xl"></i>
-                        </div>
-                        <span class="bg-purple-100 text-purple-800 text-xs font-bold px-3 py-1 rounded-full uppercase">English</span>
-                        <h3 class="text-xl font-bold text-gray-800 mt-3 mb-1 group-hover:text-amber-500 transition">Asantha S Jayamanna</h3>
-                    </div>
-                    <div class="mt-4 pt-3 border-t border-gray-100">
-                    <div class="flex items-center justify-center gap-1.5 text-emerald-600 font-bold text-sm mb-1">
-    <i class="fa-brands fa-whatsapp text-base"></i>
-    <span>+94 70 717 5509</span>
-</div>
-    <span class="text-xs text-purple-600 font-semibold block">විස්තර බලන්න &rarr;
-</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div id="teacher-modal" class="fixed inset-0 bg-black/70 backdrop-blur-md z-[999] hidden items-center justify-center p-4 transition-all duration-300">
-        <div class="bg-white rounded-3xl max-w-md w-full overflow-hidden shadow-2xl transform scale-95 transition-all duration-300" id="modal-card">
-            <div id="modal-header-bg" class="p-6 text-white text-center relative">
-                <button onclick="closeTeacherModal()" class="absolute top-4 right-4 text-white text-2xl bg-black/20 w-9 h-9 rounded-full flex items-center justify-center">&times;</button>
-                <h3 id="modal-name" class="text-2xl font-bold">ගුරුවරයාගේ නම</h3>
-                <p id="modal-subject" class="text-xs uppercase font-bold tracking-wider mt-1">විෂය</p>
-            </div>
-            <div class="p-6 space-y-4">
-                <div id="modal-timetable" class="text-gray-700 text-sm font-semibold space-y-2"></div>
-                
-                <p id="modal-description" class="text-gray-600 text-sm"></p>
-                
-                <div id="modal-whatsapp-container" class="pt-2 hidden">
-                    <a id="modal-whatsapp-btn" href="#" target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition shadow-md">
-                        <i class="fa-brands fa-whatsapp text-xl"></i>
-                        <span id="modal-whatsapp-text">WhatsApp</span>
-                    </a>
-                </div>
-
-                <button onclick="closeTeacherModal()" class="w-full bg-slate-950 text-white font-bold py-3 rounded-xl hover:bg-amber-500 hover:text-slate-950 transition">වසන්න</button>
-            </div>
-        </div>
-    </div>
-<section id="classes" class="py-20 bg-white reveal">
-
-    <div class="container mx-auto px-6">
-
-        <div class="text-center mb-14">
-            <h2 class="text-4xl font-bold text-gray-900 mb-4">
-                පන්ති විස්තර
-            </h2>
-
-            <p class="text-gray-600">
-                අප ආයතනයේ පවත්වන පන්ති සහ ශ්‍රේණි
-            </p>
+    <!-- LECTURERS SECTION -->
+    <section id="lecturers" class="py-20 max-w-6xl mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl font-bold text-stone-900 mb-3">අපේ ප්‍රවීණ දේශක මඩුල්ල</h2>
+            <p class="text-stone-500 text-sm">ගුරුවරයාගේ නම මත ක්ලික් කර පන්ති කාලසටහන සහ WhatsApp විස්තර ලබාගන්න.</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-
-            <!-- Science -->
-            <div class="bg-blue-50 border border-blue-100 rounded-2xl p-6 shadow-sm">
-                <h3 class="text-2xl font-bold text-blue-700 mb-3">
-                    Science
-                </h3>
-
-                <p class="text-gray-700">
-                    8, 9, 10, 11 ශ්‍රේණි සඳහා විද්‍යාව පන්ති.
-                </p>
-            </div>
-
-            <!-- Mathematics -->
-            <div class="bg-indigo-50 border border-indigo-100 rounded-2xl p-6 shadow-sm">
-                <h3 class="text-2xl font-bold text-indigo-700 mb-3">
-                    Mathematics
-                </h3>
-
-                <p class="text-gray-700">
-                    O/L ගණිතය සහ Revision පන්ති.
-                </p>
-            </div>
-
-            <!-- English -->
-            <div class="bg-purple-50 border border-purple-100 rounded-2xl p-6 shadow-sm">
-                <h3 class="text-2xl font-bold text-purple-700 mb-3">
-                    English
-                </h3>
-
-                <p class="text-gray-700">
-                    Grammar, Writing සහ O/L English classes.
-                </p>
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-    <section id="contact" class="py-20 bg-white reveal">
-        <div class="container mx-auto px-6 max-w-5xl">
-            <div class="bg-white rounded-3xl shadow-2xl overflow-hidden grid grid-cols-1 md:grid-cols-12 border border-gray-100">
-                <div class="bg-slate-950 text-white p-10 md:col-span-5 flex flex-col justify-between relative">
-                    <div class="absolute inset-0 opacity-5 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:12px_12px]"></div>
-                    <div class="relative z-10 space-y-6">
-                        <div class="flex items-center space-x-2">
-                            <h3 class="text-3xl font-bold tracking-tight">විමසීම්</h3>
-                            <div class="relative w-6 h-6 flex flex-col items-center justify-end">
-                                <div class="flame w-2 h-3 bg-amber-400 rounded-full mb-0.5"></div>
-                                <div class="w-4 h-2 bg-amber-700 rounded-b-full"></div>
-                            </div>
-                        </div>
-                        <div class="space-y-4 border-t border-gray-800 pt-4">
-                            <div class="flex items-start">
-                                <i class="fa-solid fa-location-dot text-amber-400 mr-3 mt-1.5 text-lg"></i>
-                                <div class="space-y-3 text-sm tracking-wide leading-relaxed">
-                                    <div>
-                                        <span class="text-xs font-bold text-amber-500 uppercase tracking-widest block mb-0.5">සිංහල</span>
-                                        <p class="text-gray-200 font-semibold">ටියුලිප් පොත් හල ඉහළ මහල, මොරකැටිය පාර, ඇඹිලිපිටිය.</p>
-                                    </div>
-                                    <div>
-                                        <span class="text-xs font-bold text-amber-500 uppercase tracking-widest block mb-0.5">தமிழ்</span>
-                                        <p class="text-gray-300 font-medium">டியுலிப் புத்தகக் கடை மேல் தளம், மொரகெட்டிய வீதி, எம்பிலிபிட்டிய.</p>
-                                    </div>
-                                    <div>
-                                        <span class="text-xs font-bold text-amber-500 uppercase tracking-widest block mb-0.5">English</span>
-                                        <p class="text-gray-300 italic">Tulip book shop top floor, Moraketiya Road, Embilipitiya.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="flex items-center pt-2">
-                                <i class="fa-solid fa-phone text-amber-400 mr-3 text-base"></i>
-                                <p class="text-gray-300 font-semibold">+94 76 577 2056</p>
-                            </div>
-                        </div>
-                    </div>
+            <!-- Card 1 -->
+            <div class="bg-white border border-stone-200 rounded-2xl p-8 text-center shadow-xs hover:shadow-md transition duration-300">
+                <div class="w-24 h-24 bg-emerald-50 rounded-full flex items-center justify-center mx-auto mb-6 text-emerald-600 text-3xl shadow-inner">
+                    <i class="fa-solid fa-user-tie"></i>
                 </div>
-                <form class="p-10 md:col-span-7 space-y-5" onsubmit="event.preventDefault(); alert('ලියාපදිංචිය සාර්ථකයි!');">
-                    <h3 class="text-3xl font-bold text-gray-800 mb-2 tracking-tight">නව පන්ති සඳහා ලියාපදිංචිය</h3>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-xs font-bold text-gray-600 uppercase mb-1.5">සම්පූර්ණ නම</label>
-                            <input type="text" required class="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-amber-500 focus:outline-none">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-bold text-gray-600 uppercase mb-1.5">දුරකථන අංකය</label>
-                            <input type="tel" required class="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-amber-500 focus:outline-none">
-                        </div>
-                    </div>
-                    <button type="submit" class="w-full bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold py-3.5 rounded-xl transition shadow-lg">ඇතුළත් වන්න</button>
-                </form>
+                <span class="bg-blue-50 text-blue-700 text-xs font-semibold px-3 py-1 rounded-md uppercase tracking-wider">Science</span>
+                <h3 class="text-xl font-bold text-stone-900 mt-4 mb-4">Dilan P Baduwalage</h3>
+                <a href="https://wa.me/94765772056" target="_blank" class="inline-flex items-center space-x-2 text-emerald-600 hover:text-emerald-700 font-medium text-sm">
+                    <i class="fa-brands fa-whatsapp text-lg"></i> <span>+94 76 577 2056</span>
+                </a>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="bg-white border border-stone-200 rounded-2xl p-8 text-center shadow-xs hover:shadow-md transition duration-300">
+                <div class="w-24 h-24 bg-emerald-50 rounded-full flex items-center justify-center mx-auto mb-6 text-emerald-600 text-3xl shadow-inner">
+                    <i class="fa-solid fa-user-tie"></i>
+                </div>
+                <span class="bg-purple-50 text-purple-700 text-xs font-semibold px-3 py-1 rounded-md uppercase tracking-wider">Mathematics</span>
+                <h3 class="text-xl font-bold text-stone-900 mt-4 mb-4">Chamil Eranda</h3>
+                <a href="https://wa.me/94713530463" target="_blank" class="inline-flex items-center space-x-2 text-emerald-600 hover:text-emerald-700 font-medium text-sm">
+                    <i class="fa-brands fa-whatsapp text-lg"></i> <span>+94 71 353 0463</span>
+                </a>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="bg-white border border-stone-200 rounded-2xl p-8 text-center shadow-xs hover:shadow-md transition duration-300">
+                <div class="w-24 h-24 bg-emerald-50 rounded-full flex items-center justify-center mx-auto mb-6 text-emerald-600 text-3xl shadow-inner">
+                    <i class="fa-solid fa-user-tie"></i>
+                </div>
+                <span class="bg-amber-50 text-amber-700 text-xs font-semibold px-3 py-1 rounded-md uppercase tracking-wider">English</span>
+                <h3 class="text-xl font-bold text-stone-900 mt-4 mb-4">Asantha S Jayamanna</h3>
+                <a href="https://wa.me/94713530463" target="_blank" class="inline-flex items-center space-x-2 text-emerald-600 hover:text-emerald-700 font-medium text-sm">
+                    <i class="fa-brands fa-whatsapp text-lg"></i> <span>+94 71 353 0463</span>
+                </a>
             </div>
         </div>
     </section>
 
-    <footer class="bg-slate-950 text-gray-500 py-8 text-center text-sm border-t border-gray-900">
-        <p>&copy; 2026 BMI Api. All Rights Reserved.</p>
+    <!-- DYNAMIC REGISTRATION / DASHBOARD SECTION (ස්වභාවික කොළ පැහැති පසුබිම) -->
+    <section id="registration-section" class="bg-emerald-50 py-20 border-t border-b border-emerald-100">
+        <div class="max-w-xl mx-auto px-6">
+            
+            <!-- 1. REGISTRATION FORM (ලියාපදිංචි වී නැති අයට පමණක් පෙනේ) -->
+            <div id="reg-form-block" class="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-stone-200">
+                <h2 class="text-2xl md:text-3xl font-bold text-center text-emerald-950 mb-8">නව පන්ති සඳහා ලියාපදිංචිය</h2>
+                <form onsubmit="handleRegistration(event)" class="space-y-6">
+                    <div>
+                        <label class="block text-sm font-semibold text-stone-700 mb-2">සම්පූර්ණ නම</label>
+                        <input type="text" required placeholder="ඔබේ නම ඇතුළත් කරන්න" class="w-full px-4 py-3 border border-stone-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 bg-stone-50 transition">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-stone-700 mb-2">දුරකථන අංකය</label>
+                        <input type="tel" required placeholder="07x xxxxxxx" class="w-full px-4 py-3 border border-stone-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 bg-stone-50 transition">
+                    </div>
+                    <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 rounded-xl shadow-md hover:shadow-lg transition duration-200 cursor-pointer text-center">
+                        ඇතුළත් වන්න
+                    </button>
+                </form>
+            </div>
+
+            <!-- 2. PERMANENT DASHBOARD (ලියාපදිංචි වූ අයට පමණක් ස්ථිරවම පෙනේ) -->
+            <div id="reg-dashboard-block" class="hidden bg-white p-8 md:p-10 rounded-2xl shadow-md border-2 border-emerald-500 text-center space-y-6 animate-fade-in">
+                <div class="w-20 h-20 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto text-4xl shadow-inner">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+                <h2 class="text-2xl md:text-3xl font-bold text-emerald-950">ඔබේ Dashboard එක</h2>
+                <div class="p-4 bg-emerald-50 rounded-xl border border-emerald-200">
+                    <p class="text-emerald-900 font-bold text-lg">🎉 ඔබ සාර්ථකව ලියාපදිංචි වී ඇත!</p>
+                    <p class="text-stone-600 text-sm mt-1">BMI ආයතනය සමඟ සම්බන්ධ වීම ගැන ස්තුතියි.</p>
+                </div>
+                <p class="text-xs text-stone-400">ඔබ දැනටමත් මෙම බ්‍රවුසරයෙන් පන්තියට ඇතුළත් වී අවසන්.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CONTACT / FOOTER SECTION -->
+    <footer id="contact" class="bg-stone-900 text-stone-300 py-16 px-6 text-sm">
+        <div class="max-w-4xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center space-y-8 md:space-y-0">
+            <div>
+                <h3 class="text-white font-bold text-lg mb-4">BMI High Education Center</h3>
+                <p class="flex items-center space-x-3 mb-2">
+                    <i class="fa-solid fa-location-dot text-emerald-400"></i>
+                    <span>ටියුලිප් පොත් හල ඉහළ මහල, මොරකැටිය පාර, ඇඹිලිපිටිය.</span>
+                </p>
+                <p class="flex items-center space-x-3 text-stone-400 italic">
+                    <span>Tulip book shop top floor, Moraketiya Road, Embilipitiya.</span>
+                </p>
+            </div>
+            <div class="flex space-x-4">
+                <a href="#" class="w-10 h-10 bg-stone-800 hover:bg-emerald-600 rounded-full flex items-center justify-center text-white transition"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://wa.me/94713530463" target="_blank" class="w-10 h-10 bg-stone-800 hover:bg-emerald-600 rounded-full flex items-center justify-center text-white transition"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+        </div>
+        <div class="max-w-4xl mx-auto border-t border-stone-800 mt-12 pt-6 text-center text-xs text-stone-500">
+            &copy; 2026 BMI Embilipitiya. All Rights Reserved.
+        </div>
     </footer>
 
+    <!-- JAVASCRIPT FOR PERMANENT DASHBOARD LOGIC -->
     <script>
-        window.addEventListener('DOMContentLoaded', () => {
-            setTimeout(() => {
-                const splash = document.getElementById('splash-screen');
-                if (splash) {
-                    splash.style.opacity = '0';
-                    splash.style.pointerEvents = 'none';
-                    setTimeout(() => {
-                        splash.style.display = 'none';
-                        revealElements();
-                    }, 1000);
-                }
-            }, 3000);
+        // පිටුව මුලින්ම Load වන විට ක්‍රියාත්මක වන කොටස
+        document.addEventListener("DOMContentLoaded", function() {
+            checkRegistrationStatus();
         });
 
-        window.addEventListener('scroll', revealElements);
-        function revealElements() {
-            const reveals = document.querySelectorAll('.reveal');
-            reveals.forEach(el => {
-                const windowHeight = window.innerHeight;
-                if (el.getBoundingClientRect().top < windowHeight - 100) {
-                    el.classList.add('active');
-                }
-            });
-        }
+        // ලියාපදිංචි වී ඇත්දැයි බ්‍රවුසර් මතකය (localStorage) පරීක්ෂා කිරීම
+        function checkRegistrationStatus() {
+            const isRegistered = localStorage.getItem("bmi_user_registered");
+            const formBlock = document.getElementById("reg-form-block");
+            const dashboardBlock = document.getElementById("reg-dashboard-block");
 
-        // Configuration with WhatsApp data
-        const teacherData = {
-            dilan: {
-                name: "Dilan P Baduwalage",
-                subject: "Science (විද්‍යාව)",
-                colorClass: "bg-blue-600",
-                hasWhatsapp: true,
-                whatsapp: "94765772056",
-                whatsappDisplay: "+94 76 577 2056",
-                timetable: [
-                    "📅 සෙනසුරාදා: පෙ.ව 8.00 - 10.00 (11 වසර)", 
-                    "📅 සෙනසුරාදා: පෙ.ව 10.00 - 12.00 (9 වසර)", 
-                    "📅 සෙනසුරාදා: ප.ව 1.00 - 3.00 (10 වසර)",
-                    "📅 සදුදා: ප.ව 3.00 - 5.30 (Grade 11 Revision)"
-                ],
-                description: "විද්‍යාව ප්‍රායෝගික පරීක්ෂණ දෘශ්‍ය මාධ්‍ය ඇසුරෙන් සරලවම මතක තබා ගැනීමට ඉගැන්වේ."
-            },
-            chamil: {
-                name: "Chamil Eranda",
-                subject: "Mathematics (ගණිතය)",
-                colorClass: "bg-indigo-600",
-                hasWhatsapp: true,
-                whatsapp: "94713530463",
-                whatsappDisplay: "+94 71 353 0463",
-                timetable: [
-                    "📅 සෙනසුරාදා: ප.ව 1.00 - 3.00 (9 වසර)",
-                    "📅 සෙනසුරාදා: පෙ.ව 8.00 - 10.00 (10 වසර)",
-                    "📅 සෙනසුරාදා: පෙ.ව 10.00 - 12.00 (11 වසර)",
-                    "📅 සෙනසුරාදා: ප.ව 3.00 - 5.00 (O/L English Medium)", 
-                    "📅 ඉරිදා: පෙ.ව 8.00 - 11.00 (O/L Revision)"
-                ],
-                description: "සංකීර්ණ සමීකරණ හා ප්‍රමේයයන් ඉතා කෙටි ක්‍රම මඟින් මොළයට ධාරණය කරවයි."
-            },
-            asantha: {
-                name: "Asantha S Jayamantha",
-                subject: "English (ඉංග්‍රීසි භාෂාව)",
-                colorClass: "bg-purple-600",
-                hasWhatsapp: true,
-whatsapp: "94713530463",
-whatsappDisplay: "+94 71 353 0463",
-                timetable: [
-                    "📅 සෙනසුරාදා: පෙ.ව 8.00 - 10.00 (9 වසර)",
-                    "📅 සෙනසුරාදා: පෙ.ව 10.00 - 12.00 (10 වසර)", 
-                    "📅 සෙනසුරාදා: ප.ව 1.00 - 3.00 (11 වසර)",
-                    "📅 Online paper class (O/L Revision)"
-                ],
-                description: "විභාග මට්ටමේ රචනා ලේඛනය සහ ව්‍යාකරණ රටා මුල සිට සරලව ඉගැන්වේ."
+            if (isRegistered === "true") {
+                if (formBlock) formBlock.classList.add("hidden"); // Form එක හංගනවා
+                if (dashboardBlock) dashboardBlock.classList.remove("hidden"); // Dashboard එක පෙන්වනවා
             }
-        };
-
-        function openTeacherModal(key) {
-            const data = teacherData[key];
-            if (!data) return;
-            document.getElementById('modal-name').innerText = data.name;
-            document.getElementById('modal-subject').innerText = data.subject;
-            document.getElementById('modal-description').innerText = data.description;
-            document.getElementById('modal-header-bg').className = `p-6 text-white text-center relative ${data.colorClass}`;
-            document.getElementById('modal-timetable').innerHTML = data.timetable.map(t => `<p class="py-1 border-b border-gray-100">${t}</p>`).join('');
-            
-            // Toggle dynamic WhatsApp layout inside the modal
-            const waContainer = document.getElementById('modal-whatsapp-container');
-            if (data.hasWhatsapp) {
-                const waBtn = document.getElementById('modal-whatsapp-btn');
-                waBtn.href = `https://wa.me/${data.whatsapp}`;
-                document.getElementById('modal-whatsapp-text').innerText = `WhatsApp: ${data.whatsappDisplay}`;
-                waContainer.classList.remove('hidden');
-            } else {
-                waContainer.classList.add('hidden');
-            }
-            
-            const modal = document.getElementById('teacher-modal');
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-            setTimeout(() => document.getElementById('modal-card').classList.add('scale-100'), 10);
         }
 
-        function closeTeacherModal() {
-            document.getElementById('modal-card').classList.remove('scale-100');
-            setTimeout(() => {
-                document.getElementById('teacher-modal').classList.remove('flex');
-                document.getElementById('teacher-modal').classList.add('hidden');
-            }, 200);
-        }
+        // "ඇතුළත් වන්න" බොත්තම එබූ විට සිදුවන ක්‍රියාවලිය
+        function handleRegistration(event) {
+            event.preventDefault(); // පිටුව Reload වීම වලකනවා
 
-        function calculateBMI() {
-            const w = parseFloat(document.getElementById('weight').value);
-            const h = parseFloat(document.getElementById('height').value) / 100;
-            const res = document.getElementById('bmi-result');
-            if(!w || !h) return alert('අගයන් ඇතුළත් කරන්න.');
-            const bmi = (w / (h*h)).toFixed(1);
-            res.className = "mt-4 p-4 rounded-xl text-center font-bold bg-amber-100 text-amber-800 animate-[pulse_1s_1]";
-            res.innerHTML = `BMI අගය: ${bmi}`;
-            res.classList.remove('hidden');
+            // ⚠️ (මෙහිදී ඔබගේ Google Sheet එකට Data යවන Code එක ඇත්නම් එය ක්‍රියාත්මක වේ)
+
+            // බ්‍රවුසර් එකේ ලියාපදිංචිය ස්ථිරවම සේව් කිරීම
+            localStorage.setItem("bmi_user_registered", "true");
+
+            // සජීවීවම Interface එක Dashboard එකට මාරු කිරීම
+            checkRegistrationStatus();
         }
     </script>
+
 </body>
 </html>
