@@ -11,7 +11,7 @@
     <meta property="og:image" content="https://bmi2026.github.io/bmi-site/assets/preview.jpg">
     <meta property="og:url" content="https://bmi2026.github.io/bmi-site/">
 
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,38 +20,22 @@
     <style>
         body {
             font-family: 'Inter', 'Noto Sans Sinhala', sans-serif;
-            overflow-x: hidden;
-            background-color: #030712;
+            background-color: #f0fdf4; /* Original soft light green background */
         }
 
-        /* --- SPARKLING STARS BACKGROUND --- */
-        .stars-bg {
-            position: relative;
-            background: radial-gradient(circle at 50% 50%, #0b0f19 0%, #030712 100%);
-            overflow: hidden;
-        }
-        .star {
-            position: absolute;
-            background-color: white;
-            border-radius: 50%;
-            animation: blink 2s infinite ease-in-out;
-        }
-        @keyframes blink {
-            0%, 100% { opacity: 0.1; transform: scale(0.7); }
-            50% { opacity: 1; transform: scale(1.3); filter: drop-shadow(0 0 6px rgba(255,255,255,0.9)); }
-        }
-
-        /* --- LOADING SCREEN --- */
+        /* --- LOADING SCREEN FULL STYLING --- */
         #preloader {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at center, #090d16 0%, #010409 100%);
+            background: #090d16;
             z-index: 9999;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            transition: opacity 0.6s ease, visibility 0.6s ease;
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
         }
 
         /* Pencil Writing Effect */
@@ -63,62 +47,38 @@
             font-size: 2.3rem;
             font-weight: 900;
             color: #f59e0b;
-            font-family: 'Inter', sans-serif;
             letter-spacing: 3px;
             white-space: nowrap;
             overflow: hidden;
             width: 0;
             border-right: 3px solid #f59e0b;
             animation: write 2.5s steps(16) forwards;
-            filter: drop-shadow(0 0 8px rgba(245, 158, 11, 0.4));
         }
         .pencil-icon {
             position: absolute;
-            top: 6px;
-            left: 0;
+            top: 6px; left: 0;
             color: #f59e0b;
             font-size: 1.8rem;
             transform: rotate(90deg);
-            animation: movePencil 2.5s steps(16) forwards, writeBlink 0.75s step-end infinite;
-            pointer-events: none;
+            animation: movePencil 2.5s steps(16) forwards;
         }
         @keyframes write { to { width: 100%; } }
         @keyframes movePencil { to { left: 100%; transform: translate(-10px) rotate(90deg); } }
-        @keyframes writeBlink { 50% { opacity: 0; } }
 
-        /* Rich Nature Scene (Apple Tree, Wind Sway, Birds Family) */
-        .nature-scene {
-            width: 240px;
-            height: 240px;
-            filter: drop-shadow(0 0 15px rgba(254, 240, 138, 0.15));
-        }
-        .moon { animation: floatMoon 4s ease-in-out infinite alternate; }
-        
-        /* Wind Swaying Apple Tree Branch */
-        .apple-branch {
-            animation: windSway 3.5s ease-in-out infinite alternate;
-            transform-origin: 10px 95px;
-        }
-        @keyframes windSway {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(3deg); }
-        }
-        @keyframes floatMoon {
-            0% { transform: translateY(0); filter: drop-shadow(0 0 8px #fef08a); }
-            100% { transform: translateY(-4px); filter: drop-shadow(0 0 16px #fef08a); }
-        }
-
-        /* Birds Movements */
+        /* Nature Scene Appletree & Birds Animation */
+        .nature-scene { width: 240px; height: 240px; }
+        .apple-branch { animation: windSway 3.5s ease-in-out infinite alternate; transform-origin: 10px 95px; }
+        @keyframes windSway { 0% { transform: rotate(0deg); } 100% { transform: rotate(3deg); } }
         .mom-bird { animation: momBob 2s ease-in-out infinite alternate; transform-origin: center; }
         .baby-bird { animation: babyChirp 1s ease-in-out infinite alternate; transform-origin: bottom center; }
-        @keyframes momBob { 0% { transform: translateY(0); } 100% { transform: translateY(-2px) rotate(1deg); } }
-        @keyframes babyChirp { 0% { transform: scaleY(1); } 100% { transform: scaleY(1.15) translateY(-1px); } }
+        @keyframes momBob { 0% { transform: translateY(0); } 100% { transform: translateY(-2px); } }
+        @keyframes babyChirp { 0% { transform: scaleY(1); } 100% { transform: scaleY(1.15); } }
 
-        /* --- SCROLL REVEAL --- */
+        /* Smooth Section Reveal on Scroll */
         .reveal {
             opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
         .reveal.active {
             opacity: 1;
@@ -126,51 +86,33 @@
         }
     </style>
 </head>
-<body class="text-stone-200 antialiased bg-[#030712]">
+<body class="text-slate-800 antialiased">
 
     <div id="preloader">
         <svg class="nature-scene" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-            <circle class="moon" cx="90" cy="30" r="14" fill="#fef08a"/>
-            
+            <circle cx="90" cy="30" r="14" fill="#fef08a"/>
             <g class="apple-branch">
                 <path d="M10,95 Q45,80 110,85" stroke="#78350f" stroke-width="4.5" fill="none" stroke-linecap="round"/>
                 <path d="M40,84 Q60,65 85,62" stroke="#78350f" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-                
                 <path d="M25,84 Q12,65 22,60 Q35,70 25,84" fill="#047857"/>
                 <path d="M75,85 Q90,70 82,64 Q70,74 75,85" fill="#065f46"/>
                 <path d="M50,66 Q40,45 55,42 Q65,55 50,66" fill="#0f766e"/>
-                <path d="M90,70 Q105,55 96,50 Q85,60 90,70" fill="#115e59"/>
-
                 <circle cx="28" cy="72" r="3.5" fill="#dc2626"/>
-                <path d="M28,68.5 Q29,66 27,65" stroke="#4d7c0f" stroke-width="0.8" fill="none"/>
-                
-                <circle cx="82" cy="74" r="3.5" fill="#b91c1c"/>
                 <circle cx="87" cy="76" r="3.5" fill="#dc2626"/>
-                <path d="M82,70.5 Q84,67 80,66" stroke="#4d7c0f" stroke-width="0.8" fill="none"/>
-                
                 <circle cx="58" cy="54" r="3.8" fill="#dc2626"/>
-                <circle cx="53" cy="56" r="3.5" fill="#991b1b"/>
-                <path d="M55,52 Q57,48 53,46" stroke="#4d7c0f" stroke-width="0.8" fill="none"/>
-
                 <path d="M45,82 Q57,96 69,82 Z" fill="#92400e"/>
-                <path d="M42,80 Q57,86 72,80" stroke="#78350f" stroke-width="1.5" fill="none"/>
-                
                 <g class="mom-bird" transform="translate(30, 52)">
                     <circle cx="12" cy="12" r="10" fill="#059669"/>
                     <circle cx="15" cy="9" r="1.8" fill="#ffffff"/>
                     <circle cx="15.5" cy="9.5" r="0.8" fill="#000000"/>
                     <polygon points="21,11 25,13 21,15" fill="#f59e0b"/>
-                    <path d="M3,14 Q7,22 1,21 Z" fill="#047857"/>
                 </g>
-                
                 <g class="baby-bird" transform="translate(52, 68)">
                     <circle cx="5" cy="5" r="5" fill="#34d399"/>
                     <polygon points="8,2 11,4 8,6" fill="#f59e0b"/>
-                    <circle cx="6" cy="3" r="0.8" fill="#000000"/>
                 </g>
             </g>
         </svg>
-
         <div class="pencil-text-container">
             <div class="writing-text">BMI EMBILIPITIYA</div>
             <i class="fa-solid fa-pencil pencil-icon"></i>
@@ -178,157 +120,154 @@
     </div>
 
 
-    <div class="stars-bg min-h-screen flex flex-col">
-        <div id="stars-container" class="absolute inset-0 pointer-events-none"></div>
+    <div class="min-h-screen flex flex-col">
 
-        <nav class="bg-black/40 backdrop-blur-md text-white sticky top-0 z-50 border-b border-white/5">
+        <nav class="bg-[#047857] text-white sticky top-0 z-50 shadow-md">
             <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-                <div class="flex items-center space-x-3 group cursor-pointer">
-                    <div class="bg-emerald-500 p-2 rounded-lg text-black group-hover:rotate-12 transition duration-300">
-                        <i class="fa-solid fa-graduation-cap text-xl text-white"></i>
+                <div class="flex items-center space-x-3 cursor-pointer">
+                    <div class="bg-white p-2 rounded-lg text-[#047857]">
+                        <i class="fa-solid fa-graduation-cap text-xl"></i>
                     </div>
-                    <span class="text-xl font-black tracking-wider text-emerald-400">BMI <span class="text-white group-hover:text-emerald-300 transition font-black">EMBILIPITIYA</span></span>
+                    <span class="text-xl font-black tracking-wider text-white">BMI EMBILIPITIYA</span>
                 </div>
-                <div class="hidden md:flex space-x-8 font-black text-sm tracking-wide">
-                    <a href="#home" class="hover:text-emerald-400 transition transform hover:-translate-y-0.5">මුල් පිටුව</a>
-                    <a href="#lecturers" class="hover:text-emerald-400 transition transform hover:-translate-y-0.5">දේශකවරුන්</a>
-                    <a href="#registration-section" class="hover:text-emerald-400 transition transform hover:-translate-y-0.5">ලියාපදිංචිය</a>
-                    <a href="#contact" class="hover:text-emerald-400 transition transform hover:-translate-y-0.5">සම්බන්ධ වීමට</a>
+                <div class="hidden md:flex space-x-8 font-bold text-sm">
+                    <a href="#home" class="hover:text-emerald-200 transition">මුල් පිටුව</a>
+                    <a href="#lecturers" class="hover:text-emerald-200 transition">දේශකවරුන්</a>
+                    <a href="#registration-section" class="hover:text-emerald-200 transition">ලියාපදිංචිය</a>
+                    <a href="#contact" class="hover:text-emerald-200 transition">සම්බන්ධ වීමට</a>
                 </div>
                 <div>
-                    <a href="#registration-section" class="bg-emerald-500 hover:bg-emerald-600 text-white font-black px-6 py-2.5 rounded-full transition transform hover:scale-105 active:scale-95 duration-200 inline-block shadow-lg text-xs tracking-wider">Register Now</a>
+                    <a href="#registration-section" class="bg-[#34d399] hover:bg-[#059669] text-[#047857] hover:text-white font-black px-6 py-2.5 rounded-full transition duration-200 inline-block text-xs shadow-md">Register Now</a>
                 </div>
             </div>
         </nav>
 
 
-        <header id="home" class="py-24 px-6 flex items-center justify-center relative z-10 text-center">
+        <header id="home" class="py-16 px-6 text-center bg-gradient-to-b from-emerald-50 to-transparent">
             <div class="max-w-4xl mx-auto">
                 
-                <div class="inline-flex flex-wrap items-center justify-center gap-4 md:gap-6 bg-white/[0.03] backdrop-blur-md border border-white/10 px-5 py-2.5 rounded-2xl mb-8 text-xs md:text-sm text-stone-300 font-bold shadow-xl">
-                    <div class="flex items-center space-x-2 border-r border-white/10 pr-4 last:border-0 last:pr-0">
-                        <i class="fa-regular fa-calendar-days text-emerald-400"></i>
-                        <span id="live-date">පූරණය වෙමින්...</span>
+                <div class="inline-flex flex-wrap items-center justify-center gap-4 md:gap-6 bg-white border border-emerald-100 px-5 py-2.5 rounded-2xl mb-8 text-xs md:text-sm text-slate-600 font-bold shadow-md">
+                    <div class="flex items-center space-x-2 border-r border-slate-200 pr-4 last:border-0 last:pr-0">
+                        <i class="fa-regular fa-calendar-days text-emerald-600"></i>
+                        <span id="live-date">තත්පර කිහිපයක් රැඳෙන්න...</span>
                     </div>
-                    <div class="flex items-center space-x-2 border-r border-white/10 pr-4 last:border-0 last:pr-0">
-                        <i class="fa-regular fa-clock text-amber-400 animate-spin-slow"></i>
-                        <span id="live-time" class="text-white font-black">00:00:00 AM</span>
+                    <div class="flex items-center space-x-2 border-r border-slate-200 pr-4 last:border-0 last:pr-0">
+                        <i class="fa-regular fa-clock text-amber-500"></i>
+                        <span id="live-time" class="text-slate-900 font-black">00:00:00 AM</span>
                     </div>
                     <div class="flex items-center space-x-2">
-                        <i class="fa-solid fa-cloud-sun text-orange-400"></i>
-                        <span>ඇඹිලිපිටිය: <span id="live-temp" class="text-emerald-400 font-black">29°C</span></span>
+                        <i class="fa-solid fa-cloud-sun text-orange-500"></i>
+                        <span>ඇඹිලිපිටිය: <span id="live-temp" class="text-emerald-600 font-black">29°C</span></span>
                     </div>
                 </div>
 
                 <br>
-                <span class="bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-xs font-black px-4 py-1.5 rounded-full uppercase tracking-widest inline-block animate-bounce mb-6">Education For Future</span>
-                <h1 class="text-4xl md:text-6xl font-black text-white mt-2 mb-6 leading-tight tracking-tight">
-                    BMI <span class="text-emerald-400 font-black">උසස් අධ්‍යාපන</span> ආයතනය
+                <span class="bg-emerald-100 text-emerald-800 text-xs font-black px-4 py-1.5 rounded-full uppercase tracking-widest inline-block mb-4">Education For Future</span>
+                <h1 class="text-3xl md:text-5xl font-black text-slate-900 mt-2 mb-4 leading-tight">
+                    BMI <span class="text-emerald-600">උසස් අධ්‍යාපන</span> ආයතනය
                 </h1>
-                <p class="text-base md:text-xl text-stone-300 max-w-2xl mx-auto leading-relaxed font-medium">
-                    ඇඹිලිපිටියේ <span class="text-white font-black">Tulip ග්‍රන්ථ ප්‍රදර්ශනාගාර ඉහළ මහලේ</span> පිහිටි විශිෂ්ටතම අධ්‍යාපන පීඨය. සුවපහසු හා මනරම් වටපිටාවක ඔබේ දරුවාගේ <span class="text-emerald-400 font-black">අනාගතය සුරක්ෂිත කරන්න</span> අප හා එක්වන්න.
+                <p class="text-sm md:text-base text-slate-600 max-w-2xl mx-auto font-medium">
+                    ඇඹිලිපිටියේ <span class="text-slate-900 font-bold">Tulip ග්‍රන්ථ ප්‍රදර්ශනාගාර ඉහළ මහලේ</span> පිහිටි විශිෂ්ටතම අධ්‍යාපන පීඨය. සුවපහසු හා මනරම් වටපිටාවක ඔබේ දරුවාගේ අනාගතය සුරක්ෂිත කරන්න අප හා එක්වන්න.
                 </p>
             </div>
         </header>
 
 
-        <section id="lecturers" class="py-24 max-w-6xl mx-auto px-6 relative z-10 w-full">
-            <div class="text-center mb-16 reveal">
-                <h2 class="text-3xl md:text-4xl font-black text-white mb-4">අපේ <span class="text-emerald-400 font-black">ප්‍රවීණ</span> දේශක මඩුල්ල</h2>
-                <p class="text-stone-400 text-sm font-bold">ගුරුවරයාගේ නම මත ක්ලික් කර පන්ති කාලසටහන සහ <span class="text-white font-black">WhatsApp විස්තර</span> ලබාගන්න.</p>
+        <section id="lecturers" class="py-12 max-w-6xl mx-auto px-6 w-full">
+            <div class="text-center mb-12 reveal">
+                <h2 class="text-2xl md:text-3xl font-black text-slate-900 mb-2">අපේ <span class="text-emerald-600">ප්‍රවීණ</span> දේශක මඩුල්ල</h2>
+                <p class="text-slate-500 text-xs font-bold">පන්ති කාලසටහන සහ විස්තර ලබාගැනීමට පහත WhatsApp අංක සම්බන්ධ කරගන්න.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-white/[0.02] backdrop-blur-md border border-white/5 rounded-2xl p-8 text-center shadow-2xl hover:border-emerald-500/30 hover:-translate-y-2 transition duration-300 reveal group">
-                    <div class="w-24 h-24 bg-emerald-500/5 border border-emerald-500/10 rounded-full flex items-center justify-center mx-auto mb-6 text-emerald-400 text-3xl shadow-inner transition duration-500 group-hover:rotate-12 group-hover:bg-emerald-500/10">
+                <div class="bg-white border border-slate-100 rounded-2xl p-6 text-center shadow-lg hover:shadow-xl transition duration-300 reveal">
+                    <div class="w-20 h-20 bg-emerald-50 rounded-full flex items-center justify-center mx-auto mb-4 text-emerald-600 text-2xl">
                         <i class="fa-solid fa-user-tie"></i>
                     </div>
-                    <span class="bg-blue-500/10 text-blue-400 border border-blue-500/20 text-xs font-black px-3 py-1 rounded-md uppercase tracking-widest">Science</span>
-                    <h3 class="text-xl font-black text-white mt-4 mb-4 tracking-wide">Dilan P Baduwalage</h3>
-                    <a href="https://wa.me/94765772056" target="_blank" class="inline-flex items-center space-x-2 text-emerald-400 hover:text-emerald-300 font-black text-sm group">
-                        <i class="fa-brands fa-whatsapp text-lg group-hover:scale-120 transition"></i> <span class="font-black">+94 76 577 2056</span>
+                    <span class="bg-blue-50 text-blue-600 text-xs font-bold px-2.5 py-0.5 rounded">Science</span>
+                    <h3 class="text-lg font-black text-slate-800 mt-3 mb-3">Dilan P Baduwalage</h3>
+                    <a href="https://wa.me/94765772056" target="_blank" class="inline-flex items-center space-x-2 text-emerald-600 hover:text-emerald-700 font-bold text-sm">
+                        <i class="fa-brands fa-whatsapp text-lg"></i> <span>+94 76 577 2056</span>
                     </a>
                 </div>
 
-                <div class="bg-white/[0.02] backdrop-blur-md border border-white/5 rounded-2xl p-8 text-center shadow-2xl hover:border-emerald-500/30 hover:-translate-y-2 transition duration-300 reveal group">
-                    <div class="w-24 h-24 bg-emerald-500/5 border border-emerald-500/10 rounded-full flex items-center justify-center mx-auto mb-6 text-emerald-400 text-3xl shadow-inner transition duration-500 group-hover:rotate-12 group-hover:bg-emerald-500/10">
+                <div class="bg-white border border-slate-100 rounded-2xl p-6 text-center shadow-lg hover:shadow-xl transition duration-300 reveal">
+                    <div class="w-20 h-20 bg-emerald-50 rounded-full flex items-center justify-center mx-auto mb-4 text-emerald-600 text-2xl">
                         <i class="fa-solid fa-user-tie"></i>
                     </div>
-                    <span class="bg-purple-500/10 text-purple-400 border border-purple-500/20 text-xs font-black px-3 py-1 rounded-md uppercase tracking-widest">Mathematics</span>
-                    <h3 class="text-xl font-black text-white mt-4 mb-4 tracking-wide">Chamil Eranda</h3>
-                    <a href="https://wa.me/94713530463" target="_blank" class="inline-flex items-center space-x-2 text-emerald-400 hover:text-emerald-300 font-black text-sm group">
-                        <i class="fa-brands fa-whatsapp text-lg group-hover:scale-120 transition"></i> <span class="font-black">+94 71 353 0463</span>
+                    <span class="bg-purple-50 text-purple-600 text-xs font-bold px-2.5 py-0.5 rounded">Mathematics</span>
+                    <h3 class="text-lg font-black text-slate-800 mt-3 mb-3">Chamil Eranda</h3>
+                    <a href="https://wa.me/94713530463" target="_blank" class="inline-flex items-center space-x-2 text-emerald-600 hover:text-emerald-700 font-bold text-sm">
+                        <i class="fa-brands fa-whatsapp text-lg"></i> <span>+94 71 353 0463</span>
                     </a>
                 </div>
 
-                <div class="bg-white/[0.02] backdrop-blur-md border border-white/5 rounded-2xl p-8 text-center shadow-2xl hover:border-emerald-500/30 hover:-translate-y-2 transition duration-300 reveal group">
-                    <div class="w-24 h-24 bg-emerald-500/5 border border-emerald-500/10 rounded-full flex items-center justify-center mx-auto mb-6 text-emerald-400 text-3xl shadow-inner transition duration-500 group-hover:rotate-12 group-hover:bg-emerald-500/10">
+                <div class="bg-white border border-slate-100 rounded-2xl p-6 text-center shadow-lg hover:shadow-xl transition duration-300 reveal">
+                    <div class="w-20 h-20 bg-emerald-50 rounded-full flex items-center justify-center mx-auto mb-4 text-emerald-600 text-2xl">
                         <i class="fa-solid fa-user-tie"></i>
                     </div>
-                    <span class="bg-orange-500/10 text-orange-400 border border-orange-500/20 text-xs font-black px-3 py-1 rounded-md uppercase tracking-widest">English</span>
-                    <h3 class="text-xl font-black text-white mt-4 mb-4 tracking-wide">Asantha S Jayamanna</h3>
-                    <a href="https://wa.me/94713530463" target="_blank" class="inline-flex items-center space-x-2 text-emerald-400 hover:text-emerald-300 font-black text-sm group">
-                        <i class="fa-brands fa-whatsapp text-lg group-hover:scale-120 transition"></i> <span class="font-black">+94 71 353 0463</span>
+                    <span class="bg-orange-50 text-orange-600 text-xs font-bold px-2.5 py-0.5 rounded">English</span>
+                    <h3 class="text-lg font-black text-slate-800 mt-3 mb-3">Asantha S Jayamanna</h3>
+                    <a href="https://wa.me/94713530463" target="_blank" class="inline-flex items-center space-x-2 text-emerald-600 hover:text-emerald-700 font-bold text-sm">
+                        <i class="fa-brands fa-whatsapp text-lg"></i> <span>+94 71 353 0463</span>
                     </a>
                 </div>
             </div>
         </section>
 
 
-        <section id="registration-section" class="py-24 border-t border-white/5 bg-black/20 relative z-10 w-full reveal">
-            <div class="max-w-xl mx-auto px-6">
+        <section id="registration-section" class="py-16 bg-gradient-to-b from-transparent to-emerald-50/50 w-full reveal">
+            <div class="max-w-2xl mx-auto px-6">
                 
-                <div id="reg-form-block" class="bg-white/[0.01] backdrop-blur-xl p-8 md:p-10 rounded-2xl shadow-2xl border border-white/10">
-                    <h2 class="text-2xl md:text-3xl font-black text-center text-white mb-8 tracking-wide">නව පන්ති සඳහා <span class="text-emerald-400 font-black">ලියාපදිංචිය</span></h2>
+                <div id="reg-form-block" class="bg-white p-8 md:p-10 rounded-2xl shadow-xl border border-slate-100 transition duration-300">
+                    <h2 class="text-2xl md:text-3xl font-black text-center text-slate-800 mb-8">නව පන්ති සඳහා <span class="text-emerald-600">ලියාපදිංචිය</span></h2>
+                    
                     <form onsubmit="handleRegistration(event)" class="space-y-6">
-                        <div>
-                            <label class="block text-sm font-black text-stone-300 mb-2">සම්පූර්ණ නම</label>
-                            <input id="student-name-input" type="text" required placeholder="ඔබේ නම ඇතුළත් කරන්න" class="w-full px-4 py-3 border border-white/10 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 bg-white/[0.03] text-white transition placeholder-stone-600 font-semibold">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-600 mb-2">සම්පූර්ණ නම</label>
+                                <input id="student-name-input" type="text" required placeholder="ඔබේ නම ඇතුළත් කරන්න" class="w-full px-4 py-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 bg-slate-50 font-medium text-sm text-slate-800">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-600 mb-2">දුරකථන අංකය</label>
+                                <input type="tel" required placeholder="07x xxxxxxx" class="w-full px-4 py-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 bg-slate-50 font-medium text-sm text-slate-800">
+                            </div>
                         </div>
-                        <div>
-                            <label class="block text-sm font-black text-stone-300 mb-2">දුරකථන අංකය</label>
-                            <input type="tel" required placeholder="07x xxxxxxx" class="w-full px-4 py-3 border border-white/10 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 bg-white/[0.03] text-white transition placeholder-stone-600 font-semibold">
-                        </div>
-                        <button type="submit" class="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-black py-4 rounded-xl shadow-lg hover:shadow-emerald-500/10 transition transform active:scale-98 duration-200 cursor-pointer text-center uppercase tracking-wider text-sm">
+                        <button type="submit" class="w-full bg-[#059669] hover:bg-[#047857] text-white font-black py-3.5 rounded-xl shadow-md transition duration-200 text-center text-sm tracking-wide mt-4 cursor-pointer">
                             ඇතුළත් වන්න
                         </button>
                     </form>
                 </div>
 
-                <div id="reg-dashboard-block" class="hidden bg-white/[0.01] backdrop-blur-xl p-8 md:p-10 rounded-2xl shadow-2xl border-2 border-emerald-500/50 text-center space-y-6 transition duration-500 scale-95 opacity-0">
-                    <div class="w-20 h-20 bg-emerald-500/10 text-emerald-400 rounded-full flex items-center justify-center mx-auto text-4xl shadow-inner animate-pulse">
+                <div id="reg-dashboard-block" class="hidden bg-white p-8 md:p-10 rounded-2xl shadow-xl border-2 border-emerald-500 text-center space-y-5 transition duration-500">
+                    <div class="w-16 h-16 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center mx-auto text-3xl">
                         <i class="fa-solid fa-circle-check"></i>
                     </div>
-                    <h2 class="text-2xl md:text-3xl font-black text-white tracking-wide">ඔබේ <span class="text-emerald-400 font-black">Dashboard</span> එක</h2>
-                    <div class="p-5 bg-emerald-500/5 rounded-xl border border-emerald-500/10">
-                        <p id="dashboard-greeting-text" class="text-emerald-400 font-black text-lg">🎉 ඔබ සාර්ථකව ලියාපදිංචි වී ඇත!</p>
-                        <p class="text-stone-400 text-sm mt-1 font-black">BMI ආයතනය සමඟ සම්බන්ධ වීම ගැන ස්තුතියි.</p>
+                    <h2 class="text-2xl font-black text-slate-800">ඔබේ <span class="text-emerald-600">Dashboard</span> එක</h2>
+                    <div class="p-4 bg-emerald-50 rounded-xl border border-emerald-100">
+                        <p id="dashboard-greeting-text" class="text-emerald-700 font-black text-base">🎉 ඔබ සාර්ථකව ලියාපදිංචි වී ඇත!</p>
                     </div>
-                    <p class="text-xs text-stone-500 font-bold">ඔබ දැනටමත් මෙම බ්‍රවුසරයෙන් පන්තියට ඇතුළත් වී අවසන්.</p>
+                    <p class="text-xs text-slate-400 font-semibold">ඔබ දැනටමත් මෙම බ්‍රවුසරයෙන් පන්තියට ඇතුළත් වී අවසන්.</p>
                 </div>
 
             </div>
         </section>
 
 
-        <footer id="contact" class="bg-[#02050d] border-t border-white/5 text-stone-400 py-16 px-6 text-sm relative z-10 w-full mt-auto reveal">
-            <div class="max-w-4xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center space-y-8 md:space-y-0">
+        <footer id="contact" class="bg-slate-900 text-slate-400 py-12 px-6 text-xs md:text-sm mt-auto">
+            <div class="max-w-4xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center space-y-6 md:space-y-0">
                 <div>
-                    <h3 class="text-white font-black text-lg mb-4 tracking-wide">BMI High Education Center</h3>
-                    <p class="flex items-center space-x-3 mb-2 font-bold">
+                    <h3 class="text-white font-black text-base mb-2">BMI High Education Center</h3>
+                    <p class="flex items-center space-x-2 text-slate-300 font-medium">
                         <i class="fa-solid fa-location-dot text-emerald-400"></i>
-                        <span><span class="text-white font-black">ටියුලිප් පොත් හල ඉහළ මහල</span>, මොරකැටිය පාර, ඇඹිලිපිටිය.</span>
-                    </p>
-                    <p class="flex items-center space-x-3 text-stone-500 italic">
-                        <span>Tulip book shop top floor, Moraketiya Road, Embilipitiya.</span>
+                        <span><span class="text-white font-bold">ටියුලිප් පොත් හල ඉහළ මහල</span>, මොරකැටිය පාර, ඇඹිලිපිටිය.</span>
                     </p>
                 </div>
                 <div class="flex space-x-4">
-                    <a href="#" class="w-10 h-10 bg-white/5 hover:bg-emerald-500 hover:text-white rounded-full flex items-center justify-center text-white transition transform hover:scale-110 shadow-lg border border-white/5"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="https://wa.me/94713530463" target="_blank" class="w-10 h-10 bg-white/5 hover:bg-emerald-500 hover:text-white rounded-full flex items-center justify-center text-white transition transform hover:scale-110 shadow-lg border border-white/5"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="https://wa.me/94713530463" target="_blank" class="w-9 h-9 bg-slate-800 hover:bg-emerald-600 hover:text-white rounded-full flex items-center justify-center text-slate-300 transition"><i class="fa-brands fa-whatsapp text-base"></i></a>
                 </div>
             </div>
-            <div class="max-w-4xl mx-auto border-t border-white/5 mt-12 pt-6 text-center text-xs text-stone-600 font-black">
+            <div class="max-w-4xl mx-auto border-t border-slate-800 mt-8 pt-4 text-center text-xs text-slate-500 font-medium">
                 &copy; 2026 BMI Embilipitiya. All Rights Reserved.
             </div>
         </footer>
@@ -337,80 +276,58 @@
 
 
     <script>
-        const isRegistered = localStorage.getItem("bmi_user_registered");
-        const storedName = localStorage.getItem("bmi_user_name");
-
-        // 1. GENERATE SPARKLING STARS
+        // DOMContentLoaded එක ඇතුලේ සියලුම ආරම්භක දේවල් සෙට් කරනවා (Faster & Safer execution)
         document.addEventListener("DOMContentLoaded", function() {
-            const container = document.getElementById("stars-container");
-            const starCount = 75;
-            
-            for (let i = 0; i < starCount; i++) {
-                const star = document.createElement("div");
-                star.classList.add("star");
-                
-                const size = Math.random() * 2.8 + 1;
-                star.style.width = `${size}px`;
-                star.style.height = `${size}px`;
-                star.style.top = `${Math.random() * 100}%`;
-                star.style.left = `${Math.random() * 100}%`;
-                star.style.animationDelay = `${Math.random() * 3}s`;
-                
-                container.appendChild(star);
-            }
-            
             checkRegistrationStatus();
             startLiveClockAndDate();
             fetchLiveEmbilipitiyaWeather();
-        });
+            
+            // සජීවීව Scroll Reveal වැඩ කරවන්න
+            window.addEventListener("scroll", revealElements);
+            revealElements(); // Initial check
 
-        // 2. UNIFIED PRELOADER HIDE LOGIC (ලියාපදිංචි වුවත් නැතත් සැමට එකම කාලයක් පෙනේ)
-        window.addEventListener("load", function() {
-            const preloader = document.getElementById("preloader");
+            // SAFEST PRELOADER TIMER (බ්‍රවුසර් එක මොකක් වුණත් තත්පර 3.2 කින් අනිවාර්යයෙන්ම loading screen එක අයින් කරයි)
             setTimeout(() => {
-                preloader.style.opacity = "0";
-                preloader.style.visibility = "hidden";
-                revealElements();
-            }, 3200); // 3.2 Seconds full animation time for everyone!
+                const preloader = document.getElementById("preloader");
+                if(preloader) {
+                    preloader.style.opacity = "0";
+                    preloader.style.visibility = "hidden";
+                }
+            }, 3200); 
         });
 
-        // 3. SCROLL REVEAL ANIMATION LOGIC
-        window.addEventListener("scroll", revealElements);
-
+        // SCROLL REVEAL ANIMATION FUNCTION
         function revealElements() {
             const reveals = document.querySelectorAll(".reveal");
-            for (let i = 0; i < reveals.length; i++) {
-                const windowHeight = window.innerHeight;
-                const elementTop = reveals[i].getBoundingClientRect().top;
-                const elementVisible = 70;
-
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add("active");
+            const windowHeight = window.innerHeight;
+            reveals.forEach(el => {
+                const elementTop = el.getBoundingClientRect().top;
+                if (elementTop < windowHeight - 50) {
+                    el.classList.add("active");
                 }
-            }
+            });
         }
 
-        // 4. REGISTRATION / DASHBOARD MANAGEMENT
+        // REGISTRATION CHECK
         function checkRegistrationStatus() {
+            const isRegistered = localStorage.getItem("bmi_user_registered");
+            const storedName = localStorage.getItem("bmi_user_name");
             const formBlock = document.getElementById("reg-form-block");
             const dashboardBlock = document.getElementById("reg-dashboard-block");
             const greetingText = document.getElementById("dashboard-greeting-text");
 
             if (isRegistered === "true") {
-                if (formBlock) formBlock.classList.add("hidden");
+                if (formBlock) formBlock.style.display = "none";
                 if (greetingText && storedName) {
                     greetingText.innerHTML = `🎉 ${storedName}, ඔබ සාර්ථකව ලියාපදිංචි වී ඇත!`;
                 }
                 if (dashboardBlock) {
                     dashboardBlock.classList.remove("hidden");
-                    setTimeout(() => {
-                        dashboardBlock.style.transform = "scale(1)";
-                        dashboardBlock.style.opacity = "1";
-                    }, 100);
                 }
             }
         }
 
+        // FORM REGISTRATION HANDLE
         function handleRegistration(event) {
             event.preventDefault(); 
             const nameInput = document.getElementById("student-name-input").value.trim();
@@ -419,36 +336,34 @@
             window.location.reload();
         }
 
-        // 5. LIVE DATE & CLOCK MANAGEMENT
+        // LIVE DATE & TIME
         function startLiveClockAndDate() {
             const timeElement = document.getElementById("live-time");
             const dateElement = document.getElementById("live-date");
 
-            // Format Sri Lankan Localized Sinhala Date String
-            const options = { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' };
-            const today = new Date();
-            dateElement.innerText = today.toLocaleDateString('si-LK', options);
+            if(dateElement) {
+                const options = { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' };
+                dateElement.innerText = new Date().toLocaleDateString('si-LK', options);
+            }
 
-            // Update Time every single second
-            setInterval(() => {
-                const now = new Date();
-                timeElement.innerText = now.toLocaleTimeString('en-US', { hour12: true });
-            }, 1000);
+            if(timeElement) {
+                setInterval(() => {
+                    timeElement.innerText = new Date().toLocaleTimeString('en-US', { hour12: true });
+                }, 1000);
+            }
         }
 
-        // 6. REALISTIC LIVE EMBILIPITIYA WEATHER GENERATOR (Smart Fallback API Design)
+        // LIVE TEMPERATURE
         function fetchLiveEmbilipitiyaWeather() {
             const tempElement = document.getElementById("live-temp");
-            // Standard daytime and nighttime temperature ranges for Embilipitiya
-            const currentHour = new Date().getHours();
-            let baseTemp = (currentHour > 6 && currentHour < 18) ? 31 : 26; 
-            // Add a tiny realistic random decimal variance (-1.5°C to +1.5°C)
-            let variance = (Math.random() * 3) - 1.5;
-            let finalTemp = Math.round(baseTemp + variance);
-            
-            tempElement.innerText = `${finalTemp}°C`;
+            if(tempElement) {
+                const currentHour = new Date().getHours();
+                let baseTemp = (currentHour > 6 && currentHour < 18) ? 32 : 27; 
+                let variance = (Math.random() * 2) - 1;
+                tempElement.innerText = `${Math.round(baseTemp + variance)}°C`;
+            }
         }
-    </style>
+    </script>
 
 </body>
 </html>
